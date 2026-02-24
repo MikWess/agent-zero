@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "agent-zero"
+version = "0.1.0"
+description = "Agent fundamentals from scratch — docs + working examples"
+requires-python = ">=3.9"
+dependencies = [
+    "anthropic",
+    "openai",
+    "python-dotenv",
+]
