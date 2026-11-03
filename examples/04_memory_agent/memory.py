@@ -11,6 +11,7 @@ Input/Output:
 """
 
 import os
+from pathlib import Path
 from datetime import datetime
 
 
@@ -23,7 +24,7 @@ def load_memory(memory_path: str) -> str:
     """
     if not os.path.exists(memory_path):
         return ""
-    with open(memory_path, "r") as f:
+    with open(memory_path, "r", encoding="utf-8") as f:
         return f.read()
 
 
@@ -35,8 +36,8 @@ def save_memory(memory_path: str, content: str) -> None:
     Returns: nothing (writes to disk)
     """
     # Make sure the directory exists
-    os.makedirs(os.path.dirname(memory_path), exist_ok=True)
-    with open(memory_path, "w") as f:
+    Path(memory_path).parent.mkdir(parents=True, exist_ok=True)
+    with open(memory_path, "w", encoding="utf-8") as f:
         f.write(content)
 
 
@@ -53,9 +54,9 @@ def append_memory(memory_path: str, new_entry: str) -> None:
 
     # Create the file with a header if it doesn't exist yet
     if not os.path.exists(memory_path):
-        os.makedirs(os.path.dirname(memory_path), exist_ok=True)
-        with open(memory_path, "w") as f:
+        Path(memory_path).parent.mkdir(parents=True, exist_ok=True)
+        with open(memory_path, "w", encoding="utf-8") as f:
             f.write("# Agent Memory\n")
 
-    with open(memory_path, "a") as f:
+    with open(memory_path, "a", encoding="utf-8") as f:
         f.write(entry)

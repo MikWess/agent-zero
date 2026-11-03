@@ -15,6 +15,7 @@ Key differences:
 import json
 import os
 from dotenv import load_dotenv
+from agent_zero.calculator import calculator
 from openai import OpenAI
 
 load_dotenv()
@@ -22,12 +23,7 @@ load_dotenv()
 
 # ----- Tool functions (same as Anthropic version) -----
 
-def calculator(expression: str) -> str:
-    try:
-        result = eval(expression, {"__builtins__": {}})
-        return str(result)
-    except Exception as e:
-        return f"Error: {e}"
+
 
 
 def get_word_count(text: str) -> str:
