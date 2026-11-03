@@ -16,19 +16,14 @@ Output: visible loop steps + final answer
 
 import os
 from dotenv import load_dotenv
+from agent_zero.calculator import calculator
 import anthropic
 
 load_dotenv()
 
 # ----- Tool functions -----
 
-def calculator(expression: str) -> str:
-    """Evaluate a math expression."""
-    try:
-        result = eval(expression, {"__builtins__": {}})
-        return str(result)
-    except Exception as e:
-        return f"Error: {e}"
+
 
 
 def get_word_count(text: str) -> str:

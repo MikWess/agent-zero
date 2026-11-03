@@ -8,3 +8,6 @@ venv/
 dist/
 build/
 .DS_Store
+
+# Generated personal memory stays local
+examples/*/*_memory.md

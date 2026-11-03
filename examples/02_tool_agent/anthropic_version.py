@@ -17,6 +17,7 @@ Flow:
 
 import os
 from dotenv import load_dotenv
+from agent_zero.calculator import calculator
 import anthropic
 
 load_dotenv()
@@ -24,16 +25,7 @@ load_dotenv()
 
 # ----- The actual tool function -----
 # This is what our code runs when the model "calls" the calculator tool.
-def calculator(expression: str) -> str:
-    """
-    Takes a math expression like "12 * 7 + 5" and returns the result as a string.
-    Uses eval() — fine for a learning example, never do this in production.
-    """
-    try:
-        result = eval(expression, {"__builtins__": {}})  # restricted eval
-        return str(result)
-    except Exception as e:
-        return f"Error: {e}"
+
 
 
 # ----- Tool schema -----

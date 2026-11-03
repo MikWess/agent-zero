@@ -15,19 +15,14 @@ Key differences from Anthropic:
 import json
 import os
 from dotenv import load_dotenv
+from agent_zero.calculator import calculator
 from openai import OpenAI
 
 load_dotenv()
 
 
 # ----- The actual tool function (same as Anthropic version) -----
-def calculator(expression: str) -> str:
-    """Evaluate a math expression and return the result as a string."""
-    try:
-        result = eval(expression, {"__builtins__": {}})
-        return str(result)
-    except Exception as e:
-        return f"Error: {e}"
+
 
 
 # ----- Tool schema (OpenAI format) -----
